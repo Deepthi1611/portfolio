@@ -34,6 +34,9 @@ import fullStack from "./company/fullStack.png"
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
+import projectPulse from './projectPulse.jpg'
+import quickTweet from './quickTweet.jpg'
+import portfolio from './portfolio.jpg'
 
 export {
   logo,
@@ -69,4 +72,7 @@ export {
   carrent,
   jobit,
   tripguide,
+  projectPulse,
+  quickTweet,
+  portfolio
 };

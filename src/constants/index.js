@@ -21,6 +21,9 @@ import {
     carrent,
     jobit,
     tripguide,
+    projectPulse,
+    quickTweet,
+    portfolio
   } from "../assets";
   
   export const navLinks = [
@@ -200,67 +203,63 @@ import {
   
   const projects = [
     {
-      name: "Car Rent",
+      name: "Project Pulse",
       description:
-        "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+        "Web-based platform that provides a user-friendly project tracking tool for managing projects and portfolios across an organization, to enable users to access relevant project information.",
       tags: [
         {
-          name: "react",
+          name: "React.js",
           color: "blue-text-gradient",
         },
         {
-          name: "mongodb",
+          name: "Node.js",
           color: "green-text-gradient",
         },
         {
-          name: "tailwind",
+          name: "bootstrap",
           color: "pink-text-gradient",
         },
       ],
-      image: carrent,
-      source_code_link: "https://github.com/",
+      image: projectPulse,
+      source_code_link: "https://github.com/Deepthi1611/project-pulse-frontend",
     },
     {
-      name: "Job IT",
+      name: "Quick Tweet",
       description:
-        "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+        "It features user registration and login functionalities, enabling users to securely create accounts and access the platform. Once logged in, users can view, create, edit, and delete tweets",
       tags: [
         {
-          name: "react",
+          name: "Django",
           color: "blue-text-gradient",
         },
         {
-          name: "restapi",
+          name: "bootstrap",
           color: "green-text-gradient",
         },
-        {
-          name: "scss",
-          color: "pink-text-gradient",
-        },
       ],
-      image: jobit,
-      source_code_link: "https://github.com/",
+      image: quickTweet,
+      source_code_link: "https://github.com/Deepthi1611/QuickTweet",
     },
     {
-      name: "Trip Guide",
+      name: "Portfolio",
       description:
-        "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+        "It features a visually appealing and responsive layout, highlighting my completed projects, technical skills, and professional background. It also includes sections for my bio, contact information, and links to my projects",
       tags: [
         {
-          name: "nextjs",
+          name: "React.js",
           color: "blue-text-gradient",
         },
         {
-          name: "supabase",
+          name: "Tailwind",
           color: "green-text-gradient",
         },
         {
-          name: "css",
+          name: "Three.js",
           color: "pink-text-gradient",
         },
       ],
-      image: tripguide,
-      source_code_link: "https://github.com/",
+      image: portfolio,
+      source_code_link: "https://github.com/Deepthi1611/portfolio",
     },
   ];
   
