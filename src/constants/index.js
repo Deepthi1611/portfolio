@@ -13,17 +13,14 @@ import {
     nodejs,
     mongodb,
     git,
-    figma,
-    docker,
-    meta,
-    starbucks,
+    Django,
+    expressjs_1,
+    bootstrap,
+    python,
     fullStack,
-    tesla,
-    shopify,
     carrent,
     jobit,
     tripguide,
-    threejs,
   } from "../assets";
   
   export const navLinks = [
@@ -78,6 +75,14 @@ import {
       icon: typescript,
     },
     {
+      name: "Node JS",
+      icon: nodejs,
+    },
+    {
+      name: "Express JS",
+      icon: expressjs_1,
+    },
+    {
       name: "React JS",
       icon: reactjs,
     },
@@ -90,28 +95,24 @@ import {
       icon: tailwind,
     },
     {
-      name: "Node JS",
-      icon: nodejs,
+      name: "Bootstrap",
+      icon: bootstrap,
+    },
+    {
+      name: "Python",
+      icon: python,
+    },
+    {
+      name: "Django",
+      icon: Django,
     },
     {
       name: "MongoDB",
       icon: mongodb,
     },
     {
-      name: "Three JS",
-      icon: threejs,
-    },
-    {
       name: "git",
       icon: git,
-    },
-    {
-      name: "figma",
-      icon: figma,
-    },
-    {
-      name: "docker",
-      icon: docker,
     },
   ];
   

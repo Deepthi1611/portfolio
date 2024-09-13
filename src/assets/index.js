@@ -20,6 +20,10 @@ import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
+import expressjs_1 from './tech/expressjs_1.png';
+import bootstrap from './tech/bootstrap.png';
+import python from "./tech/python.png"
+import Django from "./tech/Django.png"
 
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
@@ -53,6 +57,10 @@ export {
   tailwind,
   typescript,
   threejs,
+  expressjs_1,
+  python,
+  Django,
+  bootstrap,
   meta,
   shopify,
   starbucks,
