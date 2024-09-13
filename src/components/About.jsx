@@ -4,6 +4,7 @@ import {motion} from 'framer-motion'
 import { styles } from '../style'
 import { services } from '../constants'
 import {fadeIn, textVariant} from '../utils/motion'
+import { SectionWrapper } from '../hoc'
 
 const ServiceCard = ({ index, title, icon }) => {
   return (
@@ -15,12 +16,15 @@ const ServiceCard = ({ index, title, icon }) => {
         >
           <div
           options={{
-            max:45,
-            scale:1,
-            speed:450
+            max: 45,      // Max tilt angle
+            scale: 1,     // No scaling
+            speed: 450,   // Speed of the effect
           }}
-          className='bg-tertiary rounded-[20px] py-5 px-12'
+          className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[28px] flex justify-evenly items-center flex-col'
           >
+            {/* object-contain makes the element fit within its container without stretching or cropping the content. typically an image or video)  */}
+            <img src={icon} alt={title} className='w-16 h-16 object-contain'/>
+            <h3 className='text-white text-[20px] font-bold text-center'>{title}</h3>
           </div>
         </motion.div>
       </Tilt>
@@ -33,7 +37,7 @@ const About = () => {
     <>
     <motion.div 
     variants={textVariant()}
-    style={{"marginTop": "100px"}}>
+    style={{"marginTop": "50px"}}>
       <p className={`${styles.sectionSubText}`}>Introduction</p>
       <h2 className={`${styles.sectionHeadText}`}>Overview</h2>
     </motion.div>
@@ -56,4 +60,4 @@ const About = () => {
   )
 }
 
-export default About
+export default SectionWrapper(About, "about")
