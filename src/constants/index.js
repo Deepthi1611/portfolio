@@ -18,9 +18,6 @@ import {
     bootstrap,
     python,
     fullStack,
-    carrent,
-    jobit,
-    tripguide,
     projectPulse,
     quickTweet,
     portfolio
