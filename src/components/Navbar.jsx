@@ -31,6 +31,13 @@ const Navbar = () => {
               <a href={`#${link.id}`}>{link.title}</a>
             </li>
           ))}
+          {/* View My Resume link */}
+          <li className="text-secondary hover:text-white text-[18px] font-medium cursor-pointer flex items-center">
+          <div className="w-3 h-3 rounded-full bg-gradient-to-r from-purple-400 to-purple-800 animate-pulse mr-2 animate-pulse-animation"></div>
+            <a href="https://drive.google.com/file/d/1horRYkFeYaHOC5-AiEfaXpYC3r0BnM0o/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
+              View My Resume
+            </a>
+          </li>
         </ul>
         <div className='sm:hidden flex flex-one justify-end items-center'>
           <img src={toggle? close : menu} alt='menu' className='w-[28px] h-[28px] object-contain cursor-pointer'
@@ -50,6 +57,13 @@ const Navbar = () => {
                   <a href={`#${link.id}`}>{link.title}</a>
                 </li>
               ))}
+              {/* View My Resume link */}
+              <li className="text-secondary hover:text-white text-[18px] font-medium cursor-pointer flex items-center">
+                <div className="w-3 h-3 rounded-full bg-greenYellow animate-pulse mr-2"></div>
+                <a href="https://drive.google.com/file/d/1horRYkFeYaHOC5-AiEfaXpYC3r0BnM0o/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
+                  View My Resume
+                </a>
+              </li>
             </ul>
           </div>
         </div>

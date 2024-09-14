@@ -21,6 +21,15 @@ export default {
       backgroundImage: {
         "hero-pattern": "url('/src/assets/herobg.png')",
       },
+      keyframes: {
+        pulseAnimation: {
+          '0%': { 'box-shadow': '0 0 0 0px rgba(173, 255, 47, 0.2)' },
+          '100%': { 'box-shadow': '0 0 0 12px rgba(173, 255, 47, 0)' },
+        },
+      },
+      animation: {
+        'pulse-animation': 'pulseAnimation 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
     },
   },
   plugins: [],
