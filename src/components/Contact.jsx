@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import ModalComponent from "./ModalComponent";
 
 import { styles } from "../style";
 import { EarthCanvas } from "./canvas";
@@ -16,6 +17,8 @@ const Contact = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleChange = (e) => {
     const { target } = e;
@@ -47,19 +50,15 @@ const Contact = () => {
       .then(
         () => {
           setLoading(false);
-          alert("Thank you. I will get back to you as soon as possible.");
-
-          setForm({
-            name: "",
-            email: "",
-            message: "",
-          });
+          setIsSuccess(true);
+          setModalIsOpen(true);
+          setForm({ name: '', email: '', message: '' });
         },
         (error) => {
           setLoading(false);
+          setIsSuccess(false);
+          setModalIsOpen(true);
           console.error(error);
-
-          alert("Ahh, something went wrong. Please try again.");
         }
       );
   };
@@ -129,6 +128,7 @@ const Contact = () => {
       >
         <EarthCanvas />
       </motion.div>
+       <ModalComponent isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} isSuccess={isSuccess} />
     </div>
   );
 };

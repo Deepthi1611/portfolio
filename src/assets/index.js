@@ -38,6 +38,8 @@ import projectPulse from './projectPulse.jpg'
 import quickTweet from './quickTweet.jpg'
 import portfolio from './portfolio.jpg'
 
+import celebration from "./celebration.gif"
+
 export {
   logo,
   backend,
@@ -74,5 +76,6 @@ export {
   tripguide,
   projectPulse,
   quickTweet,
-  portfolio
+  portfolio,
+  celebration
 };
