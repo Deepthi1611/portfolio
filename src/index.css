@@ -213,3 +213,7 @@
   border-image-slice: 1; 
   border: rounded-full;
 } */
+
+.poppins-font {
+  font-family: 'Poppins', sans-serif;
+}
