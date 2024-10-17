@@ -1,0 +1,29 @@
+.name {
+    font-size: 2.99rem;
+    color: #915EFF;
+    margin-top: 0.1rem !important;
+    font-family: 'Anonymous Pro', monospace;
+}
+
+.hello {
+    font-size: 1.8rem;
+    font-weight: lighter;
+    margin-bottom: -1rem;
+}
+
+.curser{
+    font-size: 2.99rem;
+}
+
+.designation{
+    font-size: 1.5rem;
+    color: whitesmoke;
+    font-family: 'Roboto Mono';
+}
+
+.tagline{
+    margin-top: 0.1rem;
+    color: rgba(255, 255, 255, 0.582);
+    font-size: 1.2rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

@@ -1,14 +1,26 @@
-import {motion, AnimatePresence} from 'framer-motion'
+import {motion} from 'framer-motion'
 import {styles} from '../style'
 import {ComputersCanvas} from "./canvas"
-import { useState, useEffect } from 'react'
+import DecoderTextAnimation from '../components/Decoder'
+import DecodeAnimation from "react-decode-animation";
+import { useState, useRef, useEffect } from 'react';
+import '../styles/hero.css'
 
 const Hero = () => {
-  const [showName, setShowName] = useState(false);
+  const texts = ["Full Stack developer", "FrontEnd Developer", "Backend Developer"];
+  const [textIndex, setTextIndex] = useState(0);
+  const [text, setText] = useState(texts[textIndex]);
+  const decodeRef = useRef();
 
   useEffect(() => {
-    setShowName(true);
-  }, []);
+    const intervalId = setInterval(() => {
+        setTextIndex((prevIndex) => (prevIndex + 1) % texts.length);
+        setText(texts[textIndex]);
+        decodeRef.current = Math.random().toString();
+    }, 3000);
+
+    return () => clearInterval(intervalId);
+}, [textIndex, texts]);
 
   return (
     <section className='relative w-full h-screen mx-auto'>
@@ -18,160 +30,22 @@ const Hero = () => {
           <div className='w-1 sm:h-80 h-40 violet-gradient'/>
         </div>
         <div>
-          <h1 className={`${styles.heroHeadText}`}>
-            Hi, I am{' '}
-            <span className='text-[#915eff]'>
-              <AnimatePresence initial={false}>
-                {showName && (
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.5 }}
-                  >
-                    D
-                  </motion.span>
-                )}
-                {showName && (
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.7 }}
-                  >
-                    e
-                  </motion.span>
-                )}
-                {/* Repeat the above pattern for each letter */}
-                {showName && (
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.9 }}
-                  >
-                    e
-                  </motion.span>
-                )}
-                {/* Continue with each letter */}
-                {showName && (
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 1.1 }}
-                  >
-                    p
-                  </motion.span>
-                )}
-                {showName && (
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 1.3 }}
-                  >
-                    t
-                  </motion.span>
-                )}
-                {showName && (
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 1.5 }}
-                  >
-                    h
-                  </motion.span>
-                )}
-                {showName && (
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 1.7 }}
-                  >
-                    i
-                  </motion.span>
-                )}
-                {showName && (
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 1.9 }}
-                  >
-                    {' '}
-                  </motion.span>
-                )}
-                {showName && (
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 2.1 }}
-                  >
-                    P
-                  </motion.span>
-                )}
-                {showName && (
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 2.3 }}
-                  >
-                    u
-                  </motion.span>
-                )}
-                {showName && (
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 2.5 }}
-                  >
-                    r
-                  </motion.span>
-                )}
-                {showName && (
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 2.7 }}
-                  >
-                    i
-                  </motion.span>
-                )}
-                {showName && (
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 2.9 }}
-                  >
-                    j
-                  </motion.span>
-                )}
-                {showName && (
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 3.1 }}
-                  >
-                    a
-                  </motion.span>
-                )}
-                {showName && (
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 3.3 }}
-                  >
-                    l
-                  </motion.span>
-                )}
-                {showName && (
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 3.5 }}
-                  >
-                    a
-                  </motion.span>
-                )}
-              </AnimatePresence>
+          <h1 className={`main ${styles.heroHeadText}`}>
+            <span className="hello">Hi, I am &nbsp;</span>
+            <span className="name">
+              <DecoderTextAnimation text="Deepthi Purijala" duration={3} />
             </span>
           </h1>
-          <p className={`${styles.heroSubText} mt-2 text-white-100`}>I am a full stack developer with a focus on <br className='hidden sm:block'/> building scalable and efficient web applications</p>
+          <div className="designation"> {'< '}
+            <span className="designation">
+              <DecodeAnimation
+                key={decodeRef.current}
+                text={text}
+                autoplay
+              />
+            </span>{' />'}
+          </div>
+          <p className={`${styles.heroSubText} mt-2 text-white-100 hidden sm:block tagline opacity-80`}>I am a full stack developer with a focus on building scalable and efficient web applications</p>
         </div>
       </div>
       <ComputersCanvas />
