@@ -1,5 +1,7 @@
-import React, { useRef, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import emailjs from "@emailjs/browser";
 import ModalComponent from "./ModalComponent";
 
@@ -9,29 +11,18 @@ import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 
 const Contact = () => {
-  const formRef = useRef();
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
   const [loading, setLoading] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleChange = (e) => {
-    const { target } = e;
-    const { name, value } = target;
+  // Validation schema using Yup
+  const validationSchema = Yup.object({
+    name: Yup.string().required("Name is required"),
+    email: Yup.string().email("Invalid email address").required("Email is required"),
+    message: Yup.string().required("Message is required"),
+  });
 
-    setForm({
-      ...form,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (values, { resetForm }) => {
     setLoading(true);
 
     emailjs
@@ -39,11 +30,11 @@ const Contact = () => {
         import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
         {
-          from_name: form.name,
+          from_name: values.name,
           to_name: "Deepthi Purijala",
-          from_email: form.email,
+          from_email: values.email,
           to_email: "deepthipurijala@gmail.com",
-          message: form.message,
+          message: values.message,
         },
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
       )
@@ -52,7 +43,7 @@ const Contact = () => {
           setLoading(false);
           setIsSuccess(true);
           setModalIsOpen(true);
-          setForm({ name: '', email: '', message: '' });
+          resetForm();
         },
         (error) => {
           setLoading(false);
@@ -74,52 +65,57 @@ const Contact = () => {
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
 
-        <form
-          ref={formRef}
+        <Formik
+          initialValues={{ name: "", email: "", message: "" }}
+          validationSchema={validationSchema}
           onSubmit={handleSubmit}
-          className='mt-12 flex flex-col gap-8'
         >
-          <label className='flex flex-col'>
-            <span className='text-white font-medium mb-4'>Your Name</span>
-            <input
-              type='text'
-              name='name'
-              value={form.name}
-              onChange={handleChange}
-              placeholder="What's your good name?"
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
-            />
-          </label>
-          <label className='flex flex-col'>
-            <span className='text-white font-medium mb-4'>Your email</span>
-            <input
-              type='email'
-              name='email'
-              value={form.email}
-              onChange={handleChange}
-              placeholder="What's your web address?"
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
-            />
-          </label>
-          <label className='flex flex-col'>
-            <span className='text-white font-medium mb-4'>Your Message</span>
-            <textarea
-              rows={7}
-              name='message'
-              value={form.message}
-              onChange={handleChange}
-              placeholder='What you want to say?'
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
-            />
-          </label>
+          {({ isSubmitting }) => (
+            <Form className='mt-12 flex flex-col gap-8'>
+              <label className='flex flex-col'>
+                <span className='text-white font-medium mb-4'>Your Name</span>
+                <Field
+                  type='text'
+                  name='name'
+                  placeholder="What's your good name?"
+                  className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                />
+                <ErrorMessage name='name' component='div' className='text-red-500' />
+              </label>
 
-          <button
-            type='submit'
-            className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
-          >
-            {loading ? "Sending..." : "Send"}
-          </button>
-        </form>
+              <label className='flex flex-col'>
+                <span className='text-white font-medium mb-4'>Your email</span>
+                <Field
+                  type='email'
+                  name='email'
+                  placeholder="What's your web address?"
+                  className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                />
+                <ErrorMessage name='email' component='div' className='text-red-500' />
+              </label>
+
+              <label className='flex flex-col'>
+                <span className='text-white font-medium mb-4'>Your Message</span>
+                <Field
+                  as='textarea'
+                  rows={7}
+                  name='message'
+                  placeholder='What you want to say?'
+                  className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+                />
+                <ErrorMessage name='message' component='div' className='text-red-500' />
+              </label>
+
+              <button
+                type='submit'
+                className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
+                disabled={isSubmitting}
+              >
+                {loading ? "Sending..." : "Send"}
+              </button>
+            </Form>
+          )}
+        </Formik>
       </motion.div>
 
       <motion.div
@@ -128,7 +124,7 @@ const Contact = () => {
       >
         <EarthCanvas />
       </motion.div>
-       <ModalComponent isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} isSuccess={isSuccess} />
+      <ModalComponent isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} isSuccess={isSuccess} />
     </div>
   );
 };
