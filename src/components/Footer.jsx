@@ -14,7 +14,7 @@ const Footer = () => {
       <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center">
         {/* Left: Your Name */}
         <div className="text-left mb-4 sm:mb-0">
-          <p className='text-[#F7CB16] text-[20px] font-bold cursor-pointer flex items-center'>
+          <p className='text-[#48B0F1] text-[20px] font-bold cursor-pointer flex items-center'>
             {/* <img src={myLogo} alt="logo" className='w-10 h-10 object-contain mt-[-7px]' /> */}
             <span className='ml-2' style={{ fontFamily: 'cursive, sans-serif' }}>Deepthi Purijala</span>
           </p>

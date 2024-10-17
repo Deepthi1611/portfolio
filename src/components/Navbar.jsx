@@ -20,7 +20,7 @@ const Navbar = () => {
         }}
         >
           <img src={myLogo} alt="logo" className='w-10 h-10 object-contain mt-[-7px]'/>
-          <p className='text-[#F7CB16] text-[16px] font-bold cursor-pointer flex '>Deepthi &nbsp;<span className='sm:block hidden'>|&nbsp; Full Stack Developer</span></p>
+          <p className='text-[#48B0F1] text-[16px] font-bold cursor-pointer flex '>Deepthi &nbsp;<span className='sm:block hidden'>|&nbsp; Full Stack Developer</span></p>
         </Link>
         <ul className='list-none hidden sm:flex flex-row gap-10'>
           {navLinks.map((link) => (
